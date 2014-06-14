@@ -3,6 +3,7 @@ NAME
 
 SYNOPSIS
     #include <sys/types.h>
+    
     #include <sha1.h>
 
     void SHA1Transform(
