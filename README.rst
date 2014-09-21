@@ -2,8 +2,9 @@ NAME
      SHA1Init, SHA1Update, SHA1Final, SHA1Transform
 
 SYNOPSIS
-     #include <sys/types.h>
-     #include <sha1.h>
+    #include <sys/types.h>
+    
+    #include <sha1.h>
 
     void SHA1Transform(
         uint32_t state[5],
