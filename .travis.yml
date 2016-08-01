@@ -1,0 +1,15 @@
+language: c
+
+compiler:
+  - clang
+  - gcc
+
+script: make test
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+    - libcunit
+    - libcunit1-dev
