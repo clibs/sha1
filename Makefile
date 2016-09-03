@@ -12,4 +12,4 @@ clean:
 
 test:
 	$(CC) $(CFLAGS) -o $(TESTBINARY) $(SOURCES) $(LINKER)
-	./sha1test	
+	./$(TESTBINARY)	
