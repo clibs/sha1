@@ -8,7 +8,7 @@ all:
 	make test
 
 clean:
-	rm -rf *.o sha1test
+	rm -rf *.o $(TESTBINARY)
 
 test:
 	$(CC) $(TESTCFLAGS) -o $(TESTBINARY) $(TESTSOURCES) $(TESTLINKER)
