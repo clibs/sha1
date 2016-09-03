@@ -1,6 +1,6 @@
-CFLAGS=-g -O0 -std=c99
-LINKER=-lcunit
-SOURCES=test.c sha1.c
+TESTCFLAGS=-g -Wall -Werror
+TESTLINKER=-lcunit
+TESTSOURCES=test.c sha1.c
 TESTBINARY=sha1test
 
 .FORCE: test
@@ -11,5 +11,5 @@ clean:
 	rm -rf *.o sha1test
 
 test:
-	$(CC) $(CFLAGS) -o $(TESTBINARY) $(SOURCES) $(LINKER)
+	$(CC) $(TESTCFLAGS) -o $(TESTBINARY) $(TESTSOURCES) $(TESTLINKER)
 	./$(TESTBINARY)	

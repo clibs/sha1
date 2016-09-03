@@ -101,14 +101,14 @@ void testvec4(
   char const string1[] = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghij";
   char const string2[] = "klmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu";
   char const expect[] = "a49b2446a02c645bf419f995b67091253a04a259";
-  char result[21];
+  unsigned char result[21];
   char hexresult[41];
   SHA1_CTX ctx;
 
   // calculate hash
   SHA1Init(&ctx);
-  SHA1Update( &ctx, string1, strlen(string1) );
-  SHA1Update( &ctx, string2, strlen(string2) );
+  SHA1Update( &ctx, (unsigned char const *)string1, strlen(string1) );
+  SHA1Update( &ctx, (unsigned char const *)string2, strlen(string2) );
   SHA1Final(result, &ctx);
 
   //format the hash for comparison
@@ -153,14 +153,14 @@ void testvec6(
 {
   char const string[] = "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmno";
   char const expect[] = "7789f0c9ef7bfc40d93311143dfbe69e2017f592";
-  char result[21];
+  unsigned char result[21];
   char hexresult[41];
   SHA1_CTX ctx;
 
   // calculate hash
   SHA1Init(&ctx);
   for ( int i = 0; i < 16777216; i++) {
-    SHA1Update( &ctx, string, strlen(string) );
+    SHA1Update( &ctx, (unsigned char const *)string, strlen(string) );
   }
   SHA1Final(result, &ctx);
 
