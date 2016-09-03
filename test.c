@@ -143,10 +143,6 @@ void testvec5(
     sprintf( ( hexresult + (2*offset)), "%02x", result[offset]&0xff);
   }
 
-
-  puts(hexresult);
-  puts(expect);
-
   CU_ASSERT( strncmp(hexresult, expect, 40) == SUCCESS );
 }
 
