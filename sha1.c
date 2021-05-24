@@ -291,6 +291,5 @@ void SHA1(
     for (ii=0; ii<len; ii+=1)
         SHA1Update(&ctx, (const unsigned char*)str + ii, 1);
     SHA1Final((unsigned char *)hash_out, &ctx);
-    hash_out[20] = '\0';
 }
 
