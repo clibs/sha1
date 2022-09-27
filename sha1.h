@@ -9,6 +9,10 @@
 
 #include "stdint.h"
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 typedef struct
 {
     uint32_t state[5];
@@ -40,5 +44,9 @@ void SHA1(
     char *hash_out,
     const char *str,
     int len);
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif /* SHA1_H */
