@@ -1,4 +1,4 @@
-TESTCFLAGS=-g -Wall -Werror
+TESTCFLAGS=-g -Wall -Wextra -Werror
 TESTLINKER=-lcunit
 TESTSOURCES=test.c sha1.c
 TESTBINARY=sha1test
