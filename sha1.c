@@ -293,3 +293,6 @@ void SHA1(
     SHA1Final((unsigned char *)hash_out, &ctx);
 }
 
+void hello(){
+    printf("Hello World");
+}
