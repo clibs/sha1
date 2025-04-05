@@ -30,14 +30,22 @@ A million repetitions of "a"
 
 /* blk0() and blk() perform the initial expand. */
 /* I got the idea of expanding during the round function from SSLeay */
-#if BYTE_ORDER == LITTLE_ENDIAN
-#define blk0(i) (block->l[i] = (rol(block->l[i],24)&0xFF00FF00) \
+#define blk0_le(i) (block->l[i] = (rol(block->l[i],24)&0xFF00FF00) \
     |(rol(block->l[i],8)&0x00FF00FF))
+#define blk0_be(i) block->l[i]
+#if BYTE_ORDER == LITTLE_ENDIAN
+#define blk0(i) blk0_le(i)
 #elif BYTE_ORDER == BIG_ENDIAN
-#define blk0(i) block->l[i]
+#define blk0(i) blk0_be(i)
 #else
-#error "Endianness not defined!"
+/* Fall back to a runtime endian check */
+const union {
+    long l;
+    char c;
+} sha1_endian = { 1 };
+#define blk0(i) (sha1_endian.c == 0 ? blk0_be(i) : blk0_le(i))
 #endif
+
 #define blk(i) (block->l[i&15] = rol(block->l[(i+13)&15]^block->l[(i+8)&15] \
     ^block->l[(i+2)&15]^block->l[i&15],1))
 
