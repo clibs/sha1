@@ -1,34 +1,22 @@
 name: CI
 
-on:
-  push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
+on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
     strategy:
       matrix:
         compiler: [gcc, clang]
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libcunit1 libcunit1-dev
-    
-    - name: Set up compiler
-      run: |
-        if [ "${{ matrix.compiler }}" = "clang" ]; then
-          echo "CC=clang" >> $GITHUB_ENV
-        else
-          echo "CC=gcc" >> $GITHUB_ENV
-        fi
-    
-    - name: Run tests
-      run: make test
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libcunit1 libcunit1-dev
+      - run: |
+          if [ "${{ matrix.compiler }}" = "clang" ]; then
+            echo "CC=clang" >> $GITHUB_ENV
+          else
+            echo "CC=gcc" >> $GITHUB_ENV
+          fi
+      - run: make test
