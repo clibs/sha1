@@ -17,7 +17,6 @@ A million repetitions of "a"
 
 #define SHA1HANDSOFF
 
-#include <stdio.h>
 #include <string.h>
 
 /* for uint32_t */
